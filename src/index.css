@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-deep-forest: #050b06;
+    --bg-emerald-glow: #0a1f11;
+    --gold-primary: #facc15;
+    --gold-bright: #fef08a;
+    --gold-deep: #ca8a04;
+    --amber-core: #78350f;
+    --amber-dark: #451a03;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100dvh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--bg-deep-forest);
+    font-family: var(--font-sans);
+  }
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-sans-ui {
+  font-family: var(--font-sans);
+}
+
+.brand-purple {
+  color: #9f25f0;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(159, 37, 240, 0.45);
+}
+
+@keyframes shimmer-gold {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #fef08a 0%,
+    #ffffff 25%,
+    #facc15 50%,
+    #fde047 75%,
+    #fef08a 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer-gold 6s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.06);
+  }
+}
+
+.ambient-glow {
+  animation: pulse-subtle 7s ease-in-out infinite alternate;
+}
+
+@keyframes flowerBurst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15) rotate(25deg);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7) translateY(-28px) rotate(80deg);
+  }
+}
+
+.animate-flower-burst {
+  animation: flowerBurst 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
